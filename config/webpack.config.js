@@ -1,33 +1,37 @@
 'use strict'
 
-const fs = require('fs')
-const path = require('path')
-const webpack = require('webpack')
-const resolve = require('resolve')
-const PnpWebpackPlugin = require('pnp-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
+const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin')
+const getCacheIdentifier = require('react-dev-utils/getCacheIdentifier')
+const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
 const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin')
-const TerserPlugin = require('terser-webpack-plugin')
+const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin')
+const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin')
+const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin')
+const typescriptFormatter = require('react-dev-utils/typescriptFormatter')
+const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin')
+
+const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin')
+const fs = require('fs')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const safePostCssParser = require('postcss-safe-parser')
-const ManifestPlugin = require('webpack-manifest-plugin')
-const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin')
-const WorkboxWebpackPlugin = require('workbox-webpack-plugin')
-const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin')
-const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin')
-const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent')
-const paths = require('./paths')
-const modules = require('./modules')
-const getClientEnvironment = require('./env')
-const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin')
-const ForkTsCheckerWebpackPlugin = require('react-dev-utils/ForkTsCheckerWebpackPlugin')
-const typescriptFormatter = require('react-dev-utils/typescriptFormatter')
-// @remove-on-eject-begin
-const getCacheIdentifier = require('react-dev-utils/getCacheIdentifier')
-// @remove-on-eject-end
+const path = require('path')
+const PnpWebpackPlugin = require('pnp-webpack-plugin')
 const postcssNormalize = require('postcss-normalize')
+const safePostCssParser = require('postcss-safe-parser')
+const resolve = require('resolve')
+const TerserPlugin = require('terser-webpack-plugin')
+const webpack = require('webpack')
+const ManifestPlugin = require('webpack-manifest-plugin')
+const WorkboxWebpackPlugin = require('workbox-webpack-plugin')
+
+const getClientEnvironment = require('./env')
+const modules = require('./modules')
+const paths = require('./paths')
+
+// @remove-on-eject-begin
+
+// @remove-on-eject-end
 
 const appPackageJson = require(paths.appPackageJson)
 

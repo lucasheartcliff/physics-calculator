@@ -16,13 +16,7 @@ import {
   Modal,
 } from 'antd'
 import StepList from './components/StepsList/StepsList'
-import { deepSearch } from './methods/deepSearch'
-import { backTrackingSearch } from './methods/backTrackingSearch'
-import { orderedSearch } from './methods/orderedSearch'
-import { greedySearch } from './methods/greedySearch'
 import { search } from './methods/breadthFirstSearch'
-import { iteratedSearch } from './methods/iteratedSearch'
-
 import { JarMap, Step, Jar } from './types'
 
 const limit = 2
@@ -46,7 +40,17 @@ export default function App() {
   const [modalView, setModalView] = React.useState(false)
 
   React.useEffect(() => {
-    search({ mass: 15, acceleration: 2, charge: 0.5 } as any,{force:true})
+    console.log('here')
+    try {
+      search(
+        { charge: 1.6, mass: 1.67, magneticField: 1.2, work: 5.3 * 1.6 } as any,
+        {
+          force: true,
+        }
+      )
+    } finally {
+      console.log('finish')
+    }
   }, [])
 
   const checkIntegrity = () => {
@@ -70,45 +74,6 @@ export default function App() {
       }
       const jarList: Jar[] = _.cloneDeep(Object.values(jarMap))
       let result: any
-
-      switch (method) {
-        case 'depth':
-          result = deepSearch(
-            jarList,
-            targetSize as number,
-            _.cloneDeep(jarMap[targetJar as number]),
-            [jarList.map(({ currentSize }) => currentSize)] as any
-          )
-          break
-        case 'backtracking':
-          result = backTrackingSearch(
-            jarList,
-            targetSize as number,
-            jarList.find((jar: Jar) => jar.id === targetJar) as Jar
-          )
-          break
-        // case "breadth":
-        //   result = breadthSearch(
-        //     jarList,
-        //     targetSize as number,
-        //     jarList.find((jar: Jar) => jar.id === targetJar) as Jar,
-        //   );
-        //   break;
-        case 'ordered':
-          result = orderedSearch(jarList, targetSize as number, targetJar)
-          break
-        case 'greedy':
-          result = greedySearch(jarList, targetSize as number, targetJar)
-          break
-        case 'iterated':
-          result = iteratedSearch(
-            jarList,
-            targetSize as number,
-            jarList.find((jar: Jar) => jar.id === targetJar) as Jar,
-            maxLevel as number
-          )
-          break
-      }
 
       result?.then((steps: Step[]) => {
         if (steps) {

@@ -45,4 +45,21 @@ export interface Node {
   result: AvailableParameters
 }
 
-export type Attribute = 'force' | 'acceleration' | 'speed' | 'mass' | 'charge' | 'energyField'
+export type Attribute =
+  | 'force'
+  | 'acceleration'
+  | 'speed'
+  | 'mass'
+  | 'charge'
+  | 'energyField'
+  | 'magneticField'
+  | 'chargeDensity'
+  | 'distance'
+  | 'time'
+  | 'eletricPotencial'
+  | 'radius'
+  | 'period'
+  | 'frequency'
+  | 'angularFrequency'
+  | 'angle'
+  | 'work'
