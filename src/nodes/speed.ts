@@ -16,4 +16,11 @@ export const speedMethods: Node[] = [
       speed: Math.sqrt((2 * work) / (mass || 1)),
     }),
   },
+  {
+    parameters: { eletricPotencial: true, charge: true, mass: true },
+    result: { speed: true },
+    calculate: ({ mass, charge, eletricPotencial }) => ({
+      speed: Math.sqrt((2 * charge * eletricPotencial) / (mass || 1)),
+    }),
+  },
 ]

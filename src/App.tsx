@@ -16,7 +16,7 @@ import {
   Modal,
 } from 'antd'
 import StepList from './components/StepsList/StepsList'
-import { search } from './methods/breadthFirstSearch'
+import { search } from './methods/search'
 import { JarMap, Step, Jar } from './types'
 
 const limit = 2
@@ -40,7 +40,6 @@ export default function App() {
   const [modalView, setModalView] = React.useState(false)
 
   React.useEffect(() => {
-    console.log('here')
     try {
       search(
         { charge: 1.6, mass: 1.67, magneticField: 1.2, work: 5.3 * 1.6 } as any,
@@ -49,7 +48,6 @@ export default function App() {
         }
       )
     } finally {
-      console.log('finish')
     }
   }, [])
 

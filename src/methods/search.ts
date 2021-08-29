@@ -10,6 +10,7 @@ import { radiusMethods } from '../nodes/radius'
 import { magneticFieldMethods } from '../nodes/magneticField'
 import { speedMethods } from '../nodes/speed'
 import { massMethods } from '../nodes/mass'
+import { accelerationMethods } from '../nodes/acceleration'
 
 type VisitedNodes = {
   [key: number]: boolean
@@ -17,13 +18,13 @@ type VisitedNodes = {
 
 const getNodes = () => {
   return [
+    ...accelerationMethods,
     ...forceMethods,
     ...energyFieldMethods,
     ...eletricPotencialMethods,
     ...frequencyMethods,
     ...radiusMethods,
     ...periodMethods,
-
     ...magneticFieldMethods,
     ...massMethods,
     ...speedMethods,
@@ -67,6 +68,6 @@ export const search = async (
     }
 
     // IF parameters match and not visited, THEN call method calculate
-    //IF result is expected value THEN add path do history
+    //IF result is expected value THEN add path to history
   }
 }

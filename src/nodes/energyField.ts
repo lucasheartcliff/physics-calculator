@@ -1,5 +1,5 @@
 import { Node } from '../types/index'
-import { VACUUM_PERMISITY } from '../utils/constants'
+import { ELETRICAL_VACUUM_PERMISSIVITY } from '../utils/constants'
 
 export const energyFieldMethods: Node[] = [
   {
@@ -13,7 +13,8 @@ export const energyFieldMethods: Node[] = [
     parameters: { distance: true, charge: true },
     result: { energyField: true },
     calculate: ({ distance, charge }) => ({
-      energyField: (charge * VACUUM_PERMISITY) / (Math.pow(distance, 2) || 1),
+      energyField:
+        (charge * ELETRICAL_VACUUM_PERMISSIVITY) / (Math.pow(distance, 2) || 1),
     }),
   },
 ]

@@ -63,3 +63,5 @@ export type Attribute =
   | 'angularFrequency'
   | 'angle'
   | 'work'
+  | 'density'
+  | 'volume'

@@ -1,5 +1,5 @@
 import { Node } from '../types/index'
-import { VACUUM_PERMISITY } from '../utils/constants'
+import { ELETRICAL_VACUUM_PERMISSIVITY } from '../utils/constants'
 
 export const eletricPotencialMethods: Node[] = [
   {
@@ -13,14 +13,16 @@ export const eletricPotencialMethods: Node[] = [
     parameters: { distance: true, charge: true },
     result: { eletricPotencial: true },
     calculate: ({ distance, charge }) => ({
-      eletricPotencial: (charge * VACUUM_PERMISITY) / (distance || 1),
+      eletricPotencial:
+        (charge * ELETRICAL_VACUUM_PERMISSIVITY) / (distance || 1),
     }),
   },
   {
     parameters: { radius: true, charge: true },
     result: { eletricPotencial: true },
     calculate: ({ radius, charge }) => ({
-      eletricPotencial: (charge * VACUUM_PERMISITY) / (radius || 1),
+      eletricPotencial:
+        (charge * ELETRICAL_VACUUM_PERMISSIVITY) / (radius || 1),
     }),
   },
 ]
